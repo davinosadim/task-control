@@ -2,9 +2,9 @@ import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateCol
 import { User } from "./User.js";
 
 export enum Status {
-  PENDING = "pendente",
-  IN_PROGRESS = "em_andamento",
-  DONE = "finalizado"
+  PENDING = "pending",
+  IN_PROGRESS = "in_progress",
+  DONE = "done"
 }
 
 @Entity("tasks")
@@ -15,7 +15,7 @@ export class Task {
     @Column({length: 100})
     title!: string
 
-    @Column({length: 200})
+    @Column({length: 250})
     description!: string
 
     @Column({
