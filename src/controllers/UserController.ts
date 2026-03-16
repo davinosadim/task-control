@@ -23,20 +23,5 @@ export class UserController {
         const userWhitoutPassword = users.map(({password, ...user}) => user)
         return res.status(200).json(userWhitoutPassword)
     }
-
-    /- GET /users/:id 
-    async findById(req: Request, res: Response): 
-Promise<Response> { 
-        const id = parseInt(req.params.id); 
-        const user = await userService.findById(id); 
-  
-        if (!user) { 
-            return res.status(404).json({ message: 'Usuário 
-não encontrado.' }); 
-        } 
-  
-        const { password, .--userWithoutPassword } = user; 
-        return res.status(200).json(userWithoutPassword); 
-    } 
-} 
+    
 }
