@@ -1,7 +1,7 @@
 import { AppDataSource } from "../database/data-source.js";
 import { Task } from "../entities/Task.js";
 import { User } from "../entities/User.js";
-import { createTaskSchema, type CreateTaskDto } from "../validations/taskValidation.js";
+import type { CreateTaskDto } from "../validations/taskValidation.js";
 
 const taskRepository = AppDataSource.getRepository(Task)
 const userRepository = AppDataSource.getRepository(User)
