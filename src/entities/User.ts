@@ -4,19 +4,19 @@ import { Task } from "./Task.js";
 @Entity("users")
 export class User {
     @PrimaryGeneratedColumn()
-    id!: number
+    id!: number;
 
     @Column({length: 50})
-    name!: string
+    name!: string;
 
     @Column({unique: true})
-    email!: string
+    email!: string;
 
     @Column()
-    password!: string
+    password!: string;
 
     @CreateDateColumn({name: "created_at"})
-    createdAt!: Date
+    createdAt!: Date;
 
     @OneToMany(() => Task, (task) => task.user)
     tasks!: Task[]
