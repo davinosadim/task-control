@@ -1,7 +1,9 @@
+import { title } from "node:process";
 import { AppDataSource } from "../database/data-source.js";
 import { Task } from "../entities/Task.js";
 import { User } from "../entities/User.js";
 import type { CreateTaskDto } from "../validations/taskValidation.js";
+
 
 const taskRepository = AppDataSource.getRepository(Task)
 const userRepository = AppDataSource.getRepository(User)
@@ -25,6 +27,20 @@ export class TaskService {
         await taskRepository.save(newTask)
         return newTask
 
+    }
+
+    async findTask(userId: number): Promise<Task[]> {
+        const user = await userRepository.findOneBy({id: userId})
+
+        if(!user){
+            throw new Error("Usuario nao encontrado")
+        }
+
+        const tasks = await taskRepository.findBy({user: {
+            id: userId
+        }})
+
+        return tasks
     }
 
 }
