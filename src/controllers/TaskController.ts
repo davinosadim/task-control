@@ -24,4 +24,30 @@ export class TaskController {
             
         }
     }
+
+    async findTasks(req: Request, res: Response): Promise<Response> {
+        try {
+
+            const userId = Number(req.params.id)
+
+            const tasks = await taskService.findTask(userId)
+
+            if(tasks.length === 0){
+                return res.status(200).json({
+                    message: "Nao ha tarefas cadastradas",
+                    data: []
+                })
+            }
+
+            return res.status(200).json({
+                data: tasks
+            })
+            
+        } catch (error) {
+            return res.status(404).json({
+                message: error
+            })
+            
+        }
+    }
 }

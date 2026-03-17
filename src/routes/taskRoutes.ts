@@ -8,3 +8,7 @@ const taskController = new TaskController()
 
 router.post("/tasks", validate(createTaskSchema), taskController.createTask)
 
+router.get("/tasks", taskController.findTasks)
+
+export default router
+
